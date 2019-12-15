@@ -1,0 +1,158 @@
+[type="checkbox"]:checked, [type="checkbox"]:not(:checked) {
+  opacity: 100;
+  pointer-events: auto;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+body {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 5%;
+}
+
+div.banner {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form button, form h5 {
+  margin: 20px 0;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-color: #ec407a;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #ec407a !important;
+}
+
+.new_item{
+  font-size: 40pt;
+  position: relative;
+  left: 50%;
+}
+
+.new_item:hover{
+  color: green;    
+}
+
+.list_item_task_header, .list_item_due_date_header, .list_item_status_header {
+  display: inline-block;  
+  width: 25%;
+} 
+
+.list_item_card_assigned_to, .list_item_card_due_date, 
+.list_item_card_completed, .list_item_card_not_completed {
+  display: inline-block;
+  width: 25%;
+}
+
+.fixed-action-btn {
+  position: relative;
+  display: inline-block;
+  left: 18%;
+}
+
+.fixed-action-btn.direction-left ul, .fixed-action-btn.direction-right ul {
+  text-align: right;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 100%;
+  left: auto;
+  width: 500px;
+}
+
+.fixed-action-btn ul {
+  position: absolute;
+  bottom: 64px;
+  margin: 0;
+  visibility: hidden;
+}
+
+#delete_popup{
+  z-index: 50;
+  position: absolute;
+  top: 10%;
+  background-color: darkkhaki;
+  transition: left 1s;
+  }
+  
+  #delete_popup.onscreen{
+  left: 30%;
+  } 
+  
+  #delete_popup.offscreen{
+     left: -50%; 
+  } 
+  
+/* LIST SCREEN CLASSES 
+.list_item_card, .list_item_add_card, .list_item_header_card, .list_item_header_card_disabled {
+  cursor: pointer;
+}
+.list_item_card_description {
+  left: 2%;
+  width: 200px;
+}
+
+
+.list_item_task_header, .list_item_card_assigned_to {
+  left: 2%;
+}
+.list_item_due_date_header, .list_item_card_due_date {
+  left: 35%;
+}
+.list_item_status_header, .list_item_card_completed, .list_item_card_not_completed {
+  left: 60%;
+}
+.list_item_card_toolbar {
+  font-size: 20pt;
+  display: inline-block;  
+  left: 80%;
+  width: 20%;
+  top: 5%;
+  height: 90%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.list_item_card_button {
+  text-align: center;
+  border-radius: 5px;
+  margin: 1%;
+}
+.list_item_add_card {
+  text-align: center;
+  vertical-align: center;
+}
+*/
+
+
