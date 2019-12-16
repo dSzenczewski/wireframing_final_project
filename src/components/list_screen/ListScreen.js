@@ -6,6 +6,7 @@ import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
 import { Rnd } from 'react-rnd';
 import DraggableItem from './DraggableItem';
+import { getFirestore } from 'redux-firestore';
 
 class ListScreen extends Component {
     state = {
@@ -169,6 +170,34 @@ class ListScreen extends Component {
         this.props.todoList.objects = this.state.items;
     }
 
+    zoomIn = () => {
+
+    }
+
+    zoomOut = () => {
+        
+    }
+    
+    save = async () => {
+        console.log(this.props)
+        const id = this.props.match.params.id;
+        // const index = this.props.match.params.index;
+         const db = await getFirestore().collection("todoLists").doc(id.toString()).get();
+        // const items = db.data().items;
+        // items[index].properties = this.state.properties;
+        // items[index].font_size = this.state.font_size;
+        // items[index].background = this.state.background;
+        // items[index].border_color = this.state.border_color;
+        // items[index].border_thickness = this.state.border_thickness;
+        // items[index].border_radius = this.state.border_radius;
+        getFirestore().collection("todoLists").doc(id.toString()).update({objects: this.state.items});
+        this.props.history.push('/');
+    }
+
+    close = () => {
+        
+    }
+
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
@@ -182,16 +211,16 @@ class ListScreen extends Component {
                     <div class="col s12 m2">
                         <div class="row">
                             <div class="col s12 m3">
-                                <label>ZoomIn</label>
+                                <button onClick={this.zoomIn}>+</button>
                             </div>
                             <div class="col s12 m3">
-                                <label>ZoomOut</label>
+                                <button onClick={this.zoomOut}>-</button>
                             </div>
                             <div class="col s12 m3">
-                                <label>Save</label>
+                                <button onClick={this.save}>Save</button>
                             </div>
                             <div class="col s12 m3">
-                                <label>Close</label>
+                                <button onClick={this.close}>Close</button>
                             </div>
                         </div>
                         <div className="button-field">
