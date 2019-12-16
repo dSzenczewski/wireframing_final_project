@@ -10,6 +10,8 @@ import { getFirestore } from 'redux-firestore';
 
 class ListScreen extends Component {
     state = {
+        height: 600,
+        width: 800,
         name: '',
         owner: '',
         items: this.props.todoList.objects,
@@ -171,11 +173,15 @@ class ListScreen extends Component {
     }
 
     zoomIn = () => {
-
+        this.setState({height: this.state.height/2})
+        this.setState({width: this.state.width/2})
+        this.forceUpdate();
     }
 
     zoomOut = () => {
-        
+        this.setState({height: this.state.height*2})
+        this.setState({width: this.state.width*2})
+        this.forceUpdate();
     }
     
     save = async () => {
@@ -243,7 +249,7 @@ class ListScreen extends Component {
                     <div class="col s12 m8">
                         <div id="canvas-wrap">
                             {this.state.items.map(item => <DraggableItem currentItem={item} display={this.displayInfo}/>)}
-                            <canvas width="800" height="600"></canvas>
+                            <canvas width={this.state.width} height={this.state.height}></canvas>
                             <div id="overlay"></div>
                             <div className="container grey">
                         </div>
