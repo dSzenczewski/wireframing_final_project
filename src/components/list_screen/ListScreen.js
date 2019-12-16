@@ -118,39 +118,43 @@ class ListScreen extends Component {
     }
 
     properties = (event) => {
-        event.persist();
-        console.log(event.target.value)
         this.setState({properties: event.target.value}, () => {
+            this.forceUpdate();
             this.updateItem();
         });
     }
 
     font = (event) => {
         this.setState({font_size: event.target.value}, () => {
+            this.forceUpdate();
             this.updateItem();
         });
     }
 
     background = (event) => {
         this.setState({background: event.target.value}, () => {
+            this.forceUpdate();
             this.updateItem();
         });
     }
 
     bColor = (event) => {
         this.setState({border_color: event.target.value}, () => {
+            this.forceUpdate();
             this.updateItem();
         });
     }
 
     bThickness = (event) => {
         this.setState({border_thickness: event.target.value}, () => {
+            this.forceUpdate();
             this.updateItem();
         });
     }
 
     bRadius = (event) => {
         this.setState({border_radius: event.target.value}, () => {
+            this.forceUpdate();
             this.updateItem();
         });
     }
