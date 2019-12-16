@@ -39,12 +39,12 @@ class ListScreen extends Component {
             "description": "container",
             "position_x": "0",
             "position_y": "0",
-            "height": "200",
-            "width": "200",
+            "height": "400",
+            "width": "400",
             "properties": "container",
             "font_size": 12,
-            "background": "#ffffff",
-            "border_color": "#000000",
+            "background": "white",
+            "border_color": "black",
             "border_thickness": 3,
             "border_radius": 4
         });
@@ -58,12 +58,12 @@ class ListScreen extends Component {
             "description": "label",
             "position_x": "0",
             "position_y": "0",
-            "height": "20",
-            "width": "20",
+            "height": "50",
+            "width": "100",
             "properties": "label",
             "font_size": 12,
-            "background": "#ffffff",
-            "border_color": "#000000",
+            "background": "white",
+            "border_color": "black",
             "border_thickness": 3,
             "border_radius": 4
         });
@@ -77,12 +77,12 @@ class ListScreen extends Component {
             "description": "button",
             "position_x": "0",
             "position_y": "0",
-            "height": "30",
-            "width": "30",
+            "height": "100",
+            "width": "150",
             "properties": "button",
             "font_size": 12,
-            "background": "#ffffff",
-            "border_color": "#000000",
+            "background": "grey",
+            "border_color": "black",
             "border_thickness": 3,
             "border_radius": 4
         });
@@ -96,12 +96,12 @@ class ListScreen extends Component {
             "description": "textbox",
             "position_x": "0",
             "position_y": "0",
-            "height": "20",
-            "width": "60",
+            "height": "50",
+            "width": "150",
             "properties": "textbox",
             "font_size": 12,
-            "background": "#ffffff",
-            "border_color": "#000000",
+            "background": "white",
+            "border_color": "black",
             "border_thickness": 3,
             "border_radius": 4
         });
@@ -202,6 +202,29 @@ class ListScreen extends Component {
         document.getElementById("delete_popup").setAttribute("class", "onscreen");
     }
 
+    deleteObject = () => {
+        if(this.state.items[this.state.index] != null){
+            var temp = this.state.items;
+            temp[this.state.index] = {};
+            this.setState({items: temp});
+            this.props.todoList.objects = temp;
+
+        }else {
+            console.log("Object cannot be deleted")
+        }
+    }
+
+    duplicateObject = () => {
+        if(this.state.items[this.state.index] != null){
+            var temp = this.state.items[this.state.index];
+            temp.position_x = (100 + Number(temp.position_x)).toString();
+            temp.position_y = (100 + Number(temp.position_y)).toString();
+            this.setState(this.state.items[this.state.items.length+1] = temp)
+        }else {
+            console.log("Object cannot be deleted")
+        }
+    }
+
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
@@ -299,6 +322,8 @@ class ListScreen extends Component {
                             <input class="borderRadius" value={this.state.border_radius} onChange={this.bRadius}></input>
                             </div>
                         </div>
+                        {/* <button onClick={this.duplicateObject}>Duplicate Object</button> */}
+                        {/* <button onClick={this.deleteObject}>Delete Object</button> */}
                     </div>    
                 </div>
             </div>            
