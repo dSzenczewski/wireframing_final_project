@@ -9,9 +9,11 @@ export default class DraggableItem extends React.Component {
     callDisplay = (e) => {
         this.props.display(this.props.currentItem.key);
     }
-    
+
     render() {
         var borderString = "solid " + this.props.currentItem.border_thickness + "px " + this.props.currentItem.border_color;
+        var font = this.props.currentItem.font_size + "px";
+        var borderRadius = this.props.currentItem.border_radius + "px";
         console.log(borderString);
         if(this.props.currentItem.description === "container"){
             return (
@@ -20,6 +22,8 @@ export default class DraggableItem extends React.Component {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
+                                fontSize: font,
+                                borderRadius: borderRadius,
                                 border: borderString,
                                 background: this.props.currentItem.background,
                             }}
@@ -40,6 +44,8 @@ export default class DraggableItem extends React.Component {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
+                                fontSize: font,
+                                borderRadius: borderRadius,
                                 border: borderString,
                                 background: this.props.currentItem.background,
                             }}
@@ -59,6 +65,8 @@ export default class DraggableItem extends React.Component {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
+                                fontSize: font,
+                                borderRadius: borderRadius,
                                 border: borderString,
                                 background: this.props.currentItem.background,
                             }}
@@ -78,6 +86,8 @@ export default class DraggableItem extends React.Component {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
+                                fontSize: font,
+                                borderRadius: borderRadius,
                                 border: borderString,
                                 background: this.props.currentItem.background,
                             }}
