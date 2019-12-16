@@ -33,7 +33,13 @@ export default class DraggableItem extends React.Component {
         } else if(this.props.currentItem.description === "textbox"){
             return (
                 <Rnd 
-                            style = {styleTextbox}
+                            style = {{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "solid 4px #ddd",
+                                background: this.props.currentItem.background,
+                            }}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
@@ -46,7 +52,13 @@ export default class DraggableItem extends React.Component {
         } else if(this.props.currentItem.description === "button"){
             return (
                 <Rnd 
-                            style = {styleButton}
+                            style = {{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "solid 4px #ddd",
+                                background: this.props.currentItem.background,
+                            }}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
@@ -59,7 +71,13 @@ export default class DraggableItem extends React.Component {
         } else if(this.props.currentItem.description === "label"){
             return (
                 <Rnd 
-                            style = {styleLabel}
+                            style = {{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "solid 4px #ddd",
+                                background: this.props.currentItem.background,
+                            }}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
@@ -75,32 +93,32 @@ export default class DraggableItem extends React.Component {
     }
 }
 
-const stylesContainer = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "solid 4px #ddd",
-    //background: this.props.currentItem.background,
-};
+// const stylesContainer = {
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     border: "solid 4px #ddd",
+//     //background: this.props.currentItem.background,
+// };
 
-const styleButton = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "solid 1px #ddd",
-    background: "#000000"
-};
+// const styleButton = {
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     border: "solid 1px #ddd",
+//     background: "#000000"
+// };
 
-const styleTextbox = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "solid 2px #ddd",
-    background: "#fffffff"
-};
+// const styleTextbox = {
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     border: "solid 2px #ddd",
+//     background: "#fffffff"
+// };
 
-const styleLabel = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-};
+// const styleLabel = {
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+// };
