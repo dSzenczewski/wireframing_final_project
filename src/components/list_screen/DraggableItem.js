@@ -6,63 +6,81 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Rnd } from 'react-rnd';
 
 export default class DraggableItem extends React.Component {
+    callDisplay = (e) => {
+        this.props.display(this.props.currentItem.key);
+    } 
     render() {
         if(this.props.currentItem.description === "container"){
             return (
                 <Rnd 
-                            style = {this.props.currentItem.background}
+                            style = {{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "solid 4px #ddd",
+                                background: this.props.currentItem.background,
+                            }}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
                                     width: this.props.currentItem.width,
                                     height: this.props.currentItem.height,
-                            }}>{this.props.currentItem.properties}</Rnd>
+                                    
+                            }}
+                            onClick={this.callDisplay}
+                            ></Rnd>
             );
         } else if(this.props.currentItem.description === "textbox"){
             return (
                 <Rnd 
-                            style = {this.props.currentItem.background}
+                            style = {styleTextbox}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
                                     width: this.props.currentItem.width,
                                     height: this.props.currentItem.height,
-                            }}>{this.props.currentItem.properties}</Rnd>
+                            }}
+                            onClick={this.callDisplay}
+                            >{this.props.currentItem.properties}</Rnd>
             );
         } else if(this.props.currentItem.description === "button"){
             return (
                 <Rnd 
-                            style = {this.props.currentItem.background}
+                            style = {styleButton}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
                                     width: this.props.currentItem.width,
                                     height: this.props.currentItem.height,
-                            }}>{this.props.currentItem.properties}</Rnd>
+                            }}
+                            onClick={this.callDisplay}
+                            >{this.props.currentItem.properties}</Rnd>
             );
         } else if(this.props.currentItem.description === "label"){
             return (
                 <Rnd 
-                            style = {this.props.currentItem.background}
+                            style = {styleLabel}
                             default={{
                                     x: this.props.currentItem.position_x,
                                     y: this.props.currentItem.position_y,
                                     width: this.props.currentItem.width,
                                     height: this.props.currentItem.height,
-                            }}>{this.props.currentItem.properties}</Rnd>
+                            }}
+                            onClick={this.callDisplay}
+                            >{this.props.currentItem.properties}</Rnd>
             );
         } else {
-            return null;
+            return (console.log("WHERE IS MY STUFF"));
         }
     }
 }
 
-const styleContainer = {
+const stylesContainer = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    border: "solid 1px #ddd",
-    background: "#000000"
+    border: "solid 4px #ddd",
+    //background: this.props.currentItem.background,
 };
 
 const styleButton = {
@@ -70,14 +88,14 @@ const styleButton = {
     alignItems: "center",
     justifyContent: "center",
     border: "solid 1px #ddd",
-    background: "#222222"
+    background: "#000000"
 };
 
 const styleTextbox = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    border: "solid 1px #ddd",
+    border: "solid 2px #ddd",
     background: "#fffffff"
 };
 
