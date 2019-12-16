@@ -181,15 +181,7 @@ class ListScreen extends Component {
     save = async () => {
         console.log(this.props)
         const id = this.props.match.params.id;
-        // const index = this.props.match.params.index;
          const db = await getFirestore().collection("todoLists").doc(id.toString()).get();
-        // const items = db.data().items;
-        // items[index].properties = this.state.properties;
-        // items[index].font_size = this.state.font_size;
-        // items[index].background = this.state.background;
-        // items[index].border_color = this.state.border_color;
-        // items[index].border_thickness = this.state.border_thickness;
-        // items[index].border_radius = this.state.border_radius;
         getFirestore().collection("todoLists").doc(id.toString()).update({objects: this.state.items});
         this.props.history.push('/');
     }

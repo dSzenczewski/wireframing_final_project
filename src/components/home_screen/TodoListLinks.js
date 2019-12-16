@@ -6,10 +6,24 @@ import TodoListCard from './TodoListCard';
 import { getFirestore } from 'redux-firestore';
 
 class TodoListLinks extends React.Component {
-    delete = (e) => {
+    state = {
+        id: ''
+    }
+
+    deletePopup = (e) => {
+        this.setState({id: e.target.getAttribute("deleteIndex")});
+        document.getElementById("delete_popup").setAttribute("class", "onscreen");
+    }
+
+    notRemoved = () => {
+        document.getElementById("delete_popup").setAttribute("class", "offscreen");
+    }
+
+    removeDiagram = (e) => {
         e.stopPropagation();
-        var index = e.target.getAttribute("deleteIndex");
+        var index = this.state.id;
         getFirestore().collection('todoLists').doc(index).delete();
+        document.getElementById("delete_popup").setAttribute("class", "offscreen");
         //this.props.history.push('/');
     }
     render() {
@@ -25,7 +39,18 @@ class TodoListLinks extends React.Component {
                             </Link>
                         </div>
                         <div className="col s12 m4">
-                            <button key={todoList.id} deleteIndex={todoList.id} onClick={this.delete}>X</button>
+                            <button key={todoList.id} deleteIndex={todoList.id} onClick={this.deletePopup}>X</button>
+                        </div>
+                        <div id="delete_popup" className="offscreen">
+                            <p>Delete list?
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                Are you sure you want to delete this list?
+                            </p>
+                            <button id="yes_delete" onClick={this.removeDiagram}>Yes</button>
+                            <button id="no_delete" onClick={this.notRemoved}>No</button>
+                            <p>The list will not be retreivable.</p>
                         </div>
                     </div>
                 ))}

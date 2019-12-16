@@ -52,3 +52,19 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 .wrap{
   text-align:center
 }
+
+#delete_popup{
+  z-index: 50;
+  position: absolute;
+  top: 10%;
+  background-color: lightskyblue;
+  transition: left 1s;
+  }
+  
+  #delete_popup.onscreen{
+  left: 30%;
+  } 
+  
+  #delete_popup.offscreen{
+     left: -50%; 
+  }
