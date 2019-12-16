@@ -4,9 +4,23 @@ import { compose } from 'redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import TodoListLinks from './TodoListLinks'
+import { getFirestore } from 'redux-firestore';
 
 class HomeScreen extends Component {
 
+    handleNewDiagram = async () => {
+        console.log("New Diagrams");
+
+        const database = await getFirestore().collection("todoLists").get();
+        const key = database.size;
+
+        getFirestore().collection('todoLists').add({
+            name: "Diagram " + (key+1).toString(),
+            owner: "Unkown",
+            key: key,
+            objects: [],
+        });
+    }
     render() {
         if (!this.props.auth.uid) {
             return <Redirect to="/login" />;
@@ -25,7 +39,7 @@ class HomeScreen extends Component {
                         </div>
                         
                         <div className="home_new_list_container">
-                                <button className="home_new_list_button" onClick={this.handleNewList}>
+                                <button className="home_new_list_button" onClick={this.handleNewDiagram}>
                                     Create a New Diagram
                                 </button>
                         </div>
