@@ -42,15 +42,15 @@ class TodoListLinks extends React.Component {
                             <button key={todoList.id} deleteIndex={todoList.id} onClick={this.deletePopup}>X</button>
                         </div>
                         <div id="delete_popup" className="offscreen">
-                            <p>Delete list?
+                            <p>Delete diagram?
                                 <br></br>
                                 <br></br>
                                 <br></br>
-                                Are you sure you want to delete this list?
+                                Are you sure you want to delete this diagram?
                             </p>
                             <button id="yes_delete" onClick={this.removeDiagram}>Yes</button>
                             <button id="no_delete" onClick={this.notRemoved}>No</button>
-                            <p>The list will not be retreivable.</p>
+                            <p>The diagram will not be retreivable.</p>
                         </div>
                     </div>
                 ))}

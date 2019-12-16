@@ -179,6 +179,7 @@ class ListScreen extends Component {
     }
     
     save = async () => {
+        document.getElementById("delete_popup").setAttribute("class", "offscreen");
         console.log(this.props)
         const id = this.props.match.params.id;
          const db = await getFirestore().collection("todoLists").doc(id.toString()).get();
@@ -187,7 +188,12 @@ class ListScreen extends Component {
     }
 
     close = () => {
-        
+        document.getElementById("delete_popup").setAttribute("class", "offscreen");
+        this.props.history.push('/');
+    }
+
+    saveDialog = () => {
+        document.getElementById("delete_popup").setAttribute("class", "onscreen");
     }
 
     render() {
@@ -199,20 +205,31 @@ class ListScreen extends Component {
         
         return (
             <div className="container white">
+                <div id="delete_popup" className="offscreen">
+                    <p>Closing Diagram
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        Would you like to save before closing your work?
+                    </p>
+                    <button id="yes_delete" onClick={this.save}>Yes</button>
+                    <button id="no_delete" onClick={this.close}>No</button>
+                    <p>Any unsaved progress will be lost.</p>
+                </div>
                 <div class="row">
                     <div class="col s12 m2">
                         <div class="row">
                             <div class="col s12 m3">
-                                <button onClick={this.zoomIn}>+</button>
+                                <span onClick={this.zoomIn}>+</span>
                             </div>
                             <div class="col s12 m3">
-                                <button onClick={this.zoomOut}>-</button>
+                                <span onClick={this.zoomOut}>-</span>
                             </div>
                             <div class="col s12 m3">
-                                <button onClick={this.save}>Save</button>
+                                <span onClick={this.save}>Save</span>
                             </div>
                             <div class="col s12 m3">
-                                <button onClick={this.close}>Close</button>
+                                <span onClick={this.saveDialog}>X</span>
                             </div>
                         </div>
                         <div className="button-field">
